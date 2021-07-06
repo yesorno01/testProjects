@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.jar.root</groupId>
+    <artifactId>test_jar</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <drools.version>7.44.0.Final</drools.version>
+        <!--		<drools.version>6.4.0.Final</drools.version>-->
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>int</id>
+            <properties>
+                <activatedProperties>int</activatedProperties>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <activatedProperties>prod</activatedProperties>
+            </properties>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <activatedProperties>test</activatedProperties>
+            </properties>
+        </profile>
+    </profiles>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients -->
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-compiler</artifactId>
+            <version>${drools.version}</version>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.drools</groupId>-->
+<!--            <artifactId>drools-mvel</artifactId>-->
+<!--            <version>${drools.version}</version>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>org.kie</groupId>-->
+<!--            <artifactId>kie-api</artifactId>-->
+<!--            <version>${drools.version}</version>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>org.drools</groupId>-->
+<!--            <artifactId>drools-core</artifactId>-->
+<!--            <version>${drools.version}</version>-->
+<!--        </dependency>-->
+
+
+        <!--		<dependency>-->
+        <!--			<groupId>org.kie</groupId>-->
+        <!--			<artifactId>kie-spring</artifactId>-->
+        <!--			<version>${drools.version}</version>-->
+        <!--		</dependency>-->
+
+        <!--		<dependency>-->
+        <!--			<groupId>org.drools</groupId>-->
+        <!--			<artifactId>knowledge-api</artifactId>-->
+        <!--			<version>6.5.0.Final</version>-->
+        <!--&lt;!&ndash;			<version>${drools.version}</version>&ndash;&gt;-->
+        <!--		</dependency>-->
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.25</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.googlecode.aviator/aviator -->
+        <!--		<dependency>-->
+        <!--			<groupId>com.googlecode.aviator</groupId>-->
+        <!--			<artifactId>aviator</artifactId>-->
+        <!--			<version>4.2.10</version>-->
+        <!--		</dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/org.apache.directory.studio/org.apache.commons.lang -->
+        <dependency>
+            <groupId>org.apache.directory.studio</groupId>
+            <artifactId>org.apache.commons.lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+
+    </dependencies>
+    <build>
+        <finalName>MyTest9</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>int/**</include>
+                    <include>prod/**</include>
+                    <include>test/**</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources/${activatedProperties}</directory>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <!-- 此处指定main方法入口的class -->
+                            <mainClass>com.drools.MainTest7</mainClass>
+                            <!--							<mainClass>com.drools.MainTest</mainClass>-->
+                            <!--							<mainClass>com.drlm.flink.entity.DrlmRuleTest6</mainClass>-->
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>assembly</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
