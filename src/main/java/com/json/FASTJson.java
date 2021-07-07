@@ -28,12 +28,13 @@ public class FASTJson {
     //生成
     @Test
     public void test2(){
-        ArrayList<Student> list=new ArrayList<>();
+        ArrayList<Student> list = new ArrayList<>();
         for(int i=1;i<3;i++){
-            list.add(new Student(101+i, "码子", 20+i));
+            list.add(new Student(101+i, "李四", 20+i));
         }
         Grade grade=new Grade(100001,"张三", list);
         String json=JSON.toJSONString(grade);
         System.out.println(json);
     }
+
 }
