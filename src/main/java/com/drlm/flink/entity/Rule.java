@@ -10,6 +10,18 @@ public class Rule {
     private String rule;
     private Long ts;
 
+    public Rule() {
+    }
+
+    public Rule(String rule) {
+        this.rule = rule;
+    }
+
+    public Rule(String rule, Long ts) {
+        this.rule = rule;
+        this.ts = ts;
+    }
+
     public String getRule() {
         return rule;
     }
@@ -23,17 +35,6 @@ public class Rule {
     }
 
     public void setTs(Long ts) {
-        this.ts = ts;
-    }
-
-    public Rule(){}
-
-    public Rule(String rule) {
-        this.rule = rule;
-    }
-
-    public Rule(String rule, Long ts) {
-        this.rule = rule;
         this.ts = ts;
     }
 

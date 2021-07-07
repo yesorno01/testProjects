@@ -1,10 +1,10 @@
 package com.json;
 
 
+import com.alibaba.fastjson.JSON;
 import com.json.vo.Grade;
 import com.json.vo.Student;
 import org.junit.jupiter.api.Test;
-import com.alibaba.fastjson.JSON;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,21 +20,22 @@ public class FASTJson {
         String json2 = "['北京','天津','杭州']";
         //1、
         //静态方法
-        Grade grade= JSON.parseObject(json1, Grade.class);
+        Grade grade = JSON.parseObject(json1, Grade.class);
         System.out.println(grade);
         //2、
-        List<String> list=JSON.parseArray(json2, String.class);
+        List<String> list = JSON.parseArray(json2, String.class);
         System.out.println(list);
     }
+
     //生成
     @Test
-    public void test2(){
+    public void test2() {
         ArrayList<Student> list = new ArrayList<>();
-        for(int i=1;i<3;i++){
-            list.add(new Student(101+i, "李四", 20+i));
+        for (int i = 1; i < 3; i++) {
+            list.add(new Student(101 + i, "李四", 20 + i));
         }
-        Grade grade=new Grade(100001,"张三", list);
-        String json=JSON.toJSONString(grade);
+        Grade grade = new Grade(100001, "张三", list);
+        String json = JSON.toJSONString(grade);
         System.out.println(json);
     }
 

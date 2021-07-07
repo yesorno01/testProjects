@@ -1,9 +1,5 @@
 package com.testj.vo;
 
-import org.apache.commons.lang.StringEscapeUtils;
-
-import javax.lang.model.element.NestingKind;
-
 public class Stores {
     public float lat;
     public float lng;

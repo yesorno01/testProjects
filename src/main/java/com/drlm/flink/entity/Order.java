@@ -16,6 +16,11 @@ public class Order {
      */
     private Double realPrice;
 
+    public Order(Double originalPrice, Double realPrice) {
+        this.originalPrice = originalPrice;
+        this.realPrice = realPrice;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
@@ -37,11 +42,6 @@ public class Order {
     }
 
     public void setRealPrice(Double realPrice) {
-        this.realPrice = realPrice;
-    }
-
-    public Order(Double originalPrice, Double realPrice) {
-        this.originalPrice = originalPrice;
         this.realPrice = realPrice;
     }
 }

@@ -2,15 +2,7 @@ package com.testj;
 
 
 import com.testj.vo.Stores;
-import jxl.Cell;
-import jxl.Sheet;
-import jxl.Workbook;
 import org.apache.commons.lang.StringEscapeUtils;
-
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author zhufeng
@@ -36,6 +28,7 @@ public class MainTestBaiDu {
      * 百度地图开放平台--地理编码
      * 返回地址的经纬度信息
      * https://lbsyun.baidu.com/index.php?title=webapi/guide/webservice-geocoding
+     *
      * @param stores
      * @return
      */
@@ -77,7 +70,6 @@ public class MainTestBaiDu {
         }
         return stores;
     }
-
 
 
 }
